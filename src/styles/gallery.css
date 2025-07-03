@@ -1,0 +1,13 @@
+.keen-slider__slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.keen-slider__slide img {
+  max-width: 100%;
+	height: 200px;
+	
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
