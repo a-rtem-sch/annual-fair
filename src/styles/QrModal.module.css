@@ -1,57 +1,68 @@
+/* Тёмный полупрозрачный фон */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  backdrop-filter: blur(4px);
 }
 
+/* Белая карточка */
 .modal {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  max-width: 90vw;
-  width: 360px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   position: relative;
-  animation: fadeIn 0.3s ease-in-out;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  width: 90%;
+  max-width: 380px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
+/* Кнопка закрытия в виде иконки */
 .closeBtn {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  font-size: 24px;
-  background: none;
-  border: none;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-  color: #333;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.closeBtn:hover {
+  opacity: 1;
 }
 
+/* Заголовок */
 .title {
-  margin-bottom: 16px;
+	font-family: monument;
   font-size: 1.25rem;
-  text-align: center;
-  color: #222;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .qrContainer {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
 }
 
-@keyframes fadeIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+/* исправляем авто-сгенерированный div и video внутри html5-qrcode */
+.qrContainer > div,
+.qrContainer video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
 }
+
