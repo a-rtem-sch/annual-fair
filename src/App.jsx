@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import styles from "./App.module.css";
 import BottomMenu from "./components/BottomMenu";
+import CountdownTimer from "./components/CountdownTimer";
 
 function App() {
   // ТУТ ПРОМОТКА ЭКРАНА
@@ -22,20 +23,25 @@ function App() {
   return (
     <div className={styles.app}>
       {/* <Header /> */}
-      <section className={styles.modal}>
+      <section id="modal" className={styles.modal}>
         <BottomMenu />
       </section>
       <section id="home">
         <Introduction />
       </section>
       <section
-				id="calendar"
+        id="calendar"
         ref={scrollTargetRef}
-        style={{ height: "100vh", backgroundColor: "black" }}
-      ></section>
+        style={{ height: "100vh", backgroundColor: "" }}
+      >
+        <CountdownTimer
+          startDate="2025-07-14T09:00:00"
+          endDate="2025-07-14T18:00:00"
+        />
+      </section>
       <section id="delete">
-				<Footer />
-			</section>
+        <Footer />
+      </section>
     </div>
   );
 }

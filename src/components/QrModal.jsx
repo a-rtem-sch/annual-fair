@@ -16,21 +16,19 @@ export default function QrModal({ isOpen, onClose, onScan }) {
     { facingMode: "environment" },
     { fps: 10, qrbox: { width: 250, height: 250 } },
     async (decodedText) => {
-      // предотврати повторный вызов, если уже остановлено
       if (!scannerRef.current) return
 
       try {
         await scannerRef.current.stop()
         scannerRef.current.clear()
         scannerRef.current = null
-        onScan(decodedText) // вызови после полной остановки
+        onScan(decodedText)
         onClose()
       } catch (err) {
         console.error("Ошибка при остановке:", err)
       }
     },
     (errorMessage) => {
-      // можно игнорировать или логировать
     }
   )
 
@@ -52,7 +50,7 @@ export default function QrModal({ isOpen, onClose, onScan }) {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <img
-          src="/photos/delete.png"
+          src="/photos/close.png"
           alt="Закрыть"
           className={styles.closeBtn}
           onClick={onClose}
