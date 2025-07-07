@@ -1,4 +1,6 @@
 .wrapper {
+	margin-top: 30vh;
+	/* transform: translateY(10vh); */
   position: relative;
   background: #f9f9f9;
   overflow: visible;
@@ -10,10 +12,16 @@
   padding: 0px;
   background: none;
   border: none;
-  margin: 0;
+  /* margin: 0; */
   padding: 0;
   position: relative;
   z-index: auto;
+}
+.wrapper h1 {
+	width: 99vw;
+	text-align: center;
+	font-family: monument;
+	font-size: 50px;
 }
 
 .block {
@@ -39,8 +47,6 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 
   transition: transform 0.3s;
-
-	
 }
 
 .blockWrapper {
