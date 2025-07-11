@@ -6,49 +6,20 @@ export default function Map() {
 
   useEffect(() => {
     const svg = svgRef.current;
-
-    const handleClick = (event) => {
-      const el = event.target;
-      if (el.id && el.id.startsWith("room-")) {
-        alert("Вы кликнули на: " + el.id);
-      }
+    const handleClick = (e) => {
+      const el = e.target;
+      if (el.id?.startsWith("room-")) alert("Вы кликнули на: " + el.id);
     };
-
-    if (svg) {
-      svg.addEventListener("click", handleClick);
-    }
-
-    return () => {
-      if (svg) {
-        svg.removeEventListener("click", handleClick);
-      }
-    };
+    svg?.addEventListener("click", handleClick);
+    return () => svg?.removeEventListener("click", handleClick);
   }, []);
 
   return (
-    <div
-      className={styles.wrapper}
-      style={{
-        width: "100vw",
-        height: "100vh",
-        overflow: "hidden",
-        position: "relative",
-      }}
-    >
+    <div className={styles.wrapper}>
       <svg
         ref={svgRef}
+        className={styles.mapSvg}
         viewBox="0 0 737 579"
-        style={{
-          height: "100vw",
-          width: "auto",
-          transform: "rotate(90deg)",
-          transformOrigin: "center center",
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          translate: "-50% -50%",
-          display: "block",
-        }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect id="block-left" width="210" height="579" fill="#D9D9D9" />

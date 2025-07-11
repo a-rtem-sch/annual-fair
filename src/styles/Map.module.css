@@ -1,18 +1,39 @@
-/* .wrapper {
-  width: "100vw";
-  height: "100vh";
-  overflow: "hidden";
-  position: "relative";
+/* /* Map.module.css */
+.wrapper {
+  width: 95vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+	margin: 0 auto;
 }
 
-svg {
-  width: "100vh";
-  height: "auto";
+/* Базовый стиль SVG (общий) */
+.mapSvg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  transform-origin: center center;
+  display: block;
   transform: rotate(90deg);
-  transform-origin: "center center";
-  position: "absolute";
-  top: "50%";
-  left: "50%";
-  translate: "-50% -50%";
-  display: "block";
-} */
+}
+
+/* ---------- 1. ДЕСКТОП (шире, чем выше) ---------- */
+@media (min-aspect-ratio: 1/1) {
+  /* Экран в ландшафте: 1920×1080, 1366×768, … */
+  .mapSvg {
+    /* занимаем всю ВЫСОТУ окна (она стала «шириной» после поворота) */
+    width: 100vh;   /* ← главное правило для десктопа */
+    height: auto;   /* сохраняем пропорции, ничего не обрезаем */
+  }
+}
+
+/* ---------- 2. МОБИЛЬНЫЙ (выше, чем шире) ---------- */
+@media (max-aspect-ratio: 1/1) {
+  /* Экран в портрете: 390×844, 375×812, … */
+  .mapSvg {
+    /* занимаем всю ШИРИНУ окна (она стала «высотой» после поворота) */
+    height: 100vw;  /* ← главное правило для мобилки */
+    width: auto;    /* сохраняем пропорции */
+  }
+}
